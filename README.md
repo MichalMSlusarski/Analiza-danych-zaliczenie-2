@@ -31,7 +31,7 @@ kable(df_1, col.names = gsub("[_]", " ", names(df_1))) #funkcja gsub pozwala na 
 
 **Zbiory rokujące:**
 
-Dwa dobrze rokujące zbiory danych to Hotel Reservations Dataset (dalej: **HRD**) i Heart Failure Prediction (**HFP**). Obydwa modelują zmienne o dwóch klasach. W HRD są to odpowiednio: *Canceled* i *Not_Canceled*.  W przypadku HFP jest ona wyrażona w systemie 0-1 (zdrowy-chory).
+Dwa dobrze rokujące zbiory danych to Hotel Reservations Dataset (dalej: **HRD**) i Heart Failure Prediction (**HFP**). Obydwa modelują zmienne o dwóch klasach. W HRD są to odpowiednio: *Canceled* i *Not_Canceled*.  W przypadku HFP jest ona wyrażona w sposób binarny (zdrowy-chory).
 
 ```{r, echo=FALSE}
 #zdecydowałem się w tym  przypadku, ustawić parametr echo=FALSE, bo tabelka powstała identycznie do poprzedniej.
@@ -61,7 +61,7 @@ Dla każdej z kolumn funkcja zwraca wartość `FALSE`. Oznacza to, że w zbiorze
 
 Po upewnieniu się, że zbiór nie jest wybrakowany, wywołano funkcję `head` celem zaprezentowania zawartości i struktury zbioru.
 
-**Fragment Hotel Reservations Dataset:** *(tabelę można przesuwać używając strzałki/trójkąta w prawym rogu)*
+**Fragment Hotel Reservations Dataset:**
 ```{r}
 paged_table(head(hotel_data))
 ```
@@ -69,7 +69,6 @@ paged_table(head(hotel_data))
 Następnie, posługując się funkcją `summary`, zwrócono tabelę z opisem kolumn zbioru. Zwrócony opis przypisano jako `data.frame` do zmiennej `df_3`, którą następnie przekazano do `paged_table`. Jednakże, samo rzutowanie `summary` na `data.frame` skutkuje nieczytelnym wynikiem. Użycie `unclass` zwraca kopię wartości tabeli z usuniętym atrybutem `class`.
 ```{r}
 df_3 <- data.frame(unclass(summary(hotel_data)), check.names = FALSE)
-#pomysł z użyciem unclass za: https://stackoverflow.com/a/30520423/19675337
 ```
 
 **Opis kolumn w zbiorze:**
